@@ -115,7 +115,7 @@ export default function CTASection() {
       </div>
 
       {/* BOTTOM LAUNCHER ARCH (Mirrors Hero layout perfectly but supports structural symmetry) */}
-      <div className="relative w-full h-[220px] flex items-center justify-center pointer-events-none select-none mt-12">
+      {/* <div className="relative w-full h-[220px] flex items-center justify-center pointer-events-none select-none mt-12">
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -155,7 +155,7 @@ export default function CTASection() {
             </motion.div>
           ))}
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 }

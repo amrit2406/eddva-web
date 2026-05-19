@@ -1,144 +1,176 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiPlus, FiMessageSquare } from "react-icons/fi";
+import { FiChevronDown, FiHelpCircle } from "react-icons/fi";
 
 const faqData = [
   {
     id: 1,
-    question: "How long do I have access to the masterclass materials and workspace sandboxes?",
-    answer: "You receive lifetime access to all recorded architectural lectures, curriculum updates, and code assets. The interactive cloud sandboxes remain active for the entire duration of your cohort plus an additional 6 months post-graduation.",
+    question: "How do the masterclasses work?",
+    answer: "Our masterclasses are self-paced, high-production video courses accompanied by interactive code sandboxes, curated reading materials, and downloadable assets. Once you enroll, you gain lifetime access to the materials and any future updates.",
   },
   {
     id: 2,
-    question: "Can I transition between self-paced learning and live cohorts mid-program?",
-    answer: "Yes. Our platform architecture multi-syncs progress data natively. If your schedule changes, you can request a seat transfer to the next available live cohort without losing your sandboxed instances or lesson milestones.",
+    question: "Is there a community component to the platform?",
+    answer: "Absolutely. Every course includes access to an exclusive, moderated space within our premium network. You can discuss assignments, collaborate on projects, and network with over 50,000 active global learners and mentors.",
   },
   {
     id: 3,
-    question: "Are there dedicated enterprise or team packages available for engineering units?",
-    answer: "Absolutely. We provide custom scale packages featuring centralized team management dashboards, private sandbox runtimes, and direct Slack/Discord pipelines to masterclass mentors for teams of 5 or more.",
+    question: "Can I get a certificate after completing a course?",
+    answer: "Yes, upon successfully finishing all modules, projects, and assessments of a masterclass, you will receive a verified, cryptographically shareable digital certificate to display on your LinkedIn profile or resume.",
   },
   {
     id: 4,
-    question: "What happens if I encounter issues during a sandbox compilation build?",
-    answer: "Every sandbox track features an automated terminal snapshot system. If your build fails, you can generate a secure repository hash with one click and ping it directly to the cohort engineering team for code review.",
+    question: "What is your refund policy?",
+    answer: "We offer a 14-day, no-questions-asked money-back guarantee. If you feel the masterclass isn't the perfect fit for your learning goals, simply request a refund from your account settings page within the first two weeks.",
+  },
+  {
+    id: 5,
+    question: "Are there any prerequisites for advanced tracks?",
+    answer: "While some advanced courses benefit from foundational knowledge, each track includes a 'Warm-up' module designed to get you up to speed. Prerequisites are always explicitly listed on individual course description pages.",
   },
 ];
 
 export default function FAQSection() {
-  const [expandedId, setExpandedId] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const toggleAccordion = (id) => {
-    setExpandedId(expandedId === id ? null : id);
+  const toggleFAQ = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // Shared fluid ease curve from your Hero Section
+  const fluidEase = [0.16, 1, 0.3, 1];
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: fluidEase },
+    },
   };
 
   return (
-    <section className="relative w-full bg-white text-slate-900 py-24 sm:py-32 px-6 sm:px-12 overflow-hidden border-t border-slate-100">
-      {/* Structural Linear Vertical Accent Lines */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px)] bg-[size:16rem_auto] pointer-events-none" />
+    <section className="relative w-full bg-white text-slate-900 py-24 px-6 sm:px-12 overflow-hidden">
+      {/* Background Subtle Grid Effect (Matching the Hero Section) */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
-          {/* LEFT COLUMN: STICKY BRAND BLOCK */}
-          <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
-            {/* Context Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm">
-              <span className="flex h-2 w-2 rounded-full bg-[#0066cc]" />
-              <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                Platform Intelligence
-              </span>
-            </div>
+      <div className="max-w-4xl mx-auto relative z-10">
+        
+        {/* SECTION HEADER */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          className="text-center mb-16"
+        >
+          {/* Badge */}
+          <motion.div
+            variants={fadeInUp}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-4"
+          >
+            <FiHelpCircle className="w-4 h-4 text-[#0066cc]" />
+            <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
+              Common Questions
+            </span>
+          </motion.div>
 
-            {/* Typography */}
-            <div className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 leading-[1.15]">
-                Frequently Asked <br />
-                <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
-                  Inquiries.
-                </span>
-              </h2>
-              <p className="text-sm sm:text-base text-slate-500 font-medium leading-relaxed">
-                Can’t find the architectural detail you’re looking for? Our core engineering advisory desk is standing by to resolve specific tracks.
-              </p>
-            </div>
+          {/* Title */}
+          <motion.h2
+            variants={fadeInUp}
+            className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 mb-4"
+          >
+            Have Questions?{" "}
+            <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+              We’ve Got Answers.
+            </span>
+          </motion.h2>
 
-            {/* Quick Contact Micro-Trigger */}
-            <div className="pt-2">
-              <a 
-                href="#contact" 
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#0066cc] hover:text-[#004499] transition-colors group"
+          {/* Subtitle */}
+          <motion.p
+            variants={fadeInUp}
+            className="text-base sm:text-lg text-slate-500 font-medium max-w-xl mx-auto"
+          >
+            Everything you need to know about our premium platform, courses, and mentoring networks.
+          </motion.p>
+        </motion.div>
+
+        {/* FAQ ACCORDION LIST */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, ease: fluidEase }}
+          className="space-y-4"
+        >
+          {faqData.map((faq, index) => {
+            const isOpen = activeIndex === index;
+            return (
+              <div
+                key={faq.id}
+                className={`group border rounded-2xl transition-all duration-300 bg-white ${
+                  isOpen
+                    ? "border-[#0066cc]/30 shadow-lg shadow-blue-500/5 bg-slate-50/30"
+                    : "border-slate-200/80 hover:border-slate-300 hover:shadow-sm"
+                }`}
               >
-                <FiMessageSquare className="w-4 h-4" />
-                <span>Initialize Support Desk</span>
-                <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-200">→</span>
-              </a>
-            </div>
-          </div>
-
-          {/* RIGHT COLUMN: INTERACTIVE EXPANSION NODES */}
-          <div className="lg:col-span-8 space-y-4">
-            {faqData.map((item) => {
-              const isOpen = expandedId === item.id;
-              
-              return (
-                <div
-                  key={item.id}
-                  className={`border rounded-2xl bg-white transition-all duration-300 overflow-hidden ${
-                    isOpen 
-                      ? "border-slate-200 shadow-md shadow-slate-100/50" 
-                      : "border-slate-100 hover:border-slate-200 shadow-sm"
-                  }`}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex items-center justify-between p-6 text-left cursor-pointer select-none"
                 >
-                  {/* Interactive Header Node */}
-                  <button
-                    onClick={() => toggleAccordion(item.id)}
-                    className="w-full flex items-center justify-between p-6 text-left gap-6 group select-none focus:outline-none"
+                  <span
+                    className={`text-base sm:text-lg font-bold tracking-tight transition-colors duration-200 ${
+                      isOpen ? "text-[#0066cc]" : "text-slate-800 group-hover:text-slate-900"
+                    }`}
                   >
-                    <span className={`text-base font-black tracking-tight transition-colors duration-200 ${
-                      isOpen ? "text-[#0066cc]" : "text-slate-800 group-hover:text-slate-950"
-                    }`}>
-                      {item.question}
-                    </span>
-                    
-                    {/* Minimalist Rotational Switch */}
-                    <div className={`p-2 rounded-xl flex-shrink-0 border transition-all duration-300 ${
-                      isOpen 
-                        ? "bg-[#0066cc] border-transparent text-white rotate-45" 
-                        : "bg-slate-50 border-slate-100 text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100"
-                    }`}>
-                      <FiPlus className="w-4 h-4" />
-                    </div>
-                  </button>
+                    {faq.question}
+                  </span>
+                  
+                  {/* Icon Container */}
+                  <div
+                    className={`p-2 rounded-xl transition-all duration-300 border flex items-center justify-center flex-shrink-0 ml-4 ${
+                      isOpen
+                        ? "bg-gradient-to-tr from-[#004499] to-[#0066cc] border-transparent text-white rotate-180 shadow-md shadow-blue-500/25"
+                        : "bg-slate-50 border-slate-200 text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100"
+                    }`}
+                  >
+                    <FiChevronDown className="w-4 h-4 transition-transform duration-300" />
+                  </div>
+                </button>
 
-                  {/* Dynamic Height Containment */}
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ 
-                          height: "auto", 
-                          opacity: 1,
-                          transition: { height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.25 } }
-                        }}
-                        exit={{ 
-                          height: 0, 
-                          opacity: 0,
-                          transition: { height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.15 } }
-                        }}
-                      >
-                        <div className="px-6 pb-6 pt-0 border-t border-slate-50 text-sm sm:text-base font-medium text-slate-500 leading-relaxed bg-slate-50/30">
-                          {item.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
-
-        </div>
+                {/* Animated Collapsible Body */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                        transition: {
+                          height: { duration: 0.4, ease: fluidEase },
+                          opacity: { duration: 0.25, delay: 0.05 },
+                        },
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                        transition: {
+                          height: { duration: 0.3, ease: fluidEase },
+                          opacity: { duration: 0.15 },
+                        },
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 text-sm sm:text-base text-slate-500 font-medium leading-relaxed border-t border-slate-100/80 pt-4">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
+        </motion.div>
       </div>
     </section>
   );

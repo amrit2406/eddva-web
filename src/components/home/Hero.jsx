@@ -148,7 +148,7 @@ export default function HeroSection() {
                   <img
                     src={item.url}
                     alt="Platform Preview"
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                    className="w-full h-full object-cover transition-all duration-300"
                   />
                 )}
                 {item.type === "gradient" && (
@@ -191,9 +191,9 @@ export default function HeroSection() {
             variants={fadeInUp}
             className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6"
           >
-            Elevate Your Skills. <br />
+            Smarter Learning. <br />
             <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
-              Empower Your Future.
+              Brighter Futures.
             </span>
           </motion.h1>
 
@@ -202,8 +202,7 @@ export default function HeroSection() {
             variants={fadeInUp}
             className="text-base sm:text-lg text-slate-500 font-medium max-w-xl mx-auto leading-relaxed mb-10"
           >
-            Join a premium network of lifelong learners. Master complex domains
-            with high-impact, beautifully curated masterclasses.
+            "Eddva is not built for average learning. It is designed for those who seek precision, clarity, and an edge".
           </motion.p>
 
           {/* Dual Action CTAs */}

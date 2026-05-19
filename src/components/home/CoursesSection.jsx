@@ -1,212 +1,207 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiBookOpen, FiClock, FiLayers, FiStar } from "react-icons/fi";
+import { FiArrowRight, FiBookOpen, FiClock, FiStar, FiTrendingUp } from "react-icons/fi";
 
+// Mock data for premium masterclasses
 const coursesData = [
   {
     id: 1,
     title: "Advanced System Architecture & Microservices",
     category: "Engineering",
-    duration: "12 Weeks",
-    level: "Advanced",
+    mentor: "Sarah Jenkins",
+    role: "Principal Architect",
     rating: "4.9",
-    image: "https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=600",
-    size: "large", // Takes up more visual real estate
-    badgeColor: "bg-blue-50 text-blue-600 border-blue-100",
+    reviews: "1,240",
+    duration: "14 hrs",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=600",
+    badge: "Best Seller",
   },
   {
     id: 2,
-    title: "UI/UX Masterclass: Premium Interface Design",
-    category: "Design",
-    duration: "8 Weeks",
-    level: "All Levels",
-    rating: "5.0",
-    image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=600",
-    size: "normal",
-    badgeColor: "bg-purple-50 text-purple-600 border-purple-100",
+    title: "Product-Led Growth & Digital Strategy",
+    category: "Management",
+    mentor: "Alex Rivera",
+    role: "VP of Product",
+    rating: "4.8",
+    reviews: "890",
+    duration: "11 hrs",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600",
+    badge: "Trending",
   },
   {
     id: 3,
-    title: "Product Strategy for Next-Gen Founders",
-    category: "Management",
-    duration: "6 Weeks",
-    level: "Intermediate",
-    rating: "4.8",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600",
-    size: "normal",
-    badgeColor: "bg-amber-50 text-amber-600 border-amber-100",
-  },
-  {
-    id: 4,
-    title: "AI Integration & Machine Learning Pipelines",
-    category: "Data Science",
-    duration: "10 Weeks",
-    level: "Advanced",
-    rating: "4.9",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600",
-    size: "large",
-    badgeColor: "bg-emerald-50 text-emerald-600 border-emerald-100",
+    title: "Interactive UI Physics & Motion Design",
+    category: "Design",
+    mentor: "Elena Rostova",
+    role: "Creative Director",
+    rating: "5.0",
+    reviews: "620",
+    duration: "9 hrs",
+    image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=600",
+    badge: "New",
   },
 ];
 
-const categories = ["All Programs", "Engineering", "Design", "Management", "Data Science"];
-
 export default function CoursesSection() {
-  const [activeFilter, setActiveFilter] = useState("All Programs");
-
-  const filteredCourses = coursesData.filter(
-    (course) => activeFilter === "All Programs" || course.category === activeFilter
-  );
+  // Shared fluid ease curve from your Hero Section
+  const fluidEase = [0.16, 1, 0.3, 1];
 
   const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: fluidEase },
+    },
+  };
+
+  const cardContainerVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 },
+    },
+  };
+
+  const cardVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: fluidEase },
     },
   };
 
   return (
-    <section className="relative w-full bg-white text-slate-900 py-24 sm:py-32 px-6 sm:px-12 overflow-hidden border-t border-slate-100">
-      {/* Structural Subtle Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f8fafc_1px,transparent_1px)] bg-[size:10rem_auto] pointer-events-none" />
+    <section className="relative w-full bg-white text-slate-900 py-24 px-6 sm:px-12 overflow-hidden">
+      
+      {/* Background Decorative Grid - Seamless Continuity */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* HEADER SECTION */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            className="max-w-xl space-y-4"
-          >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm">
-              <span className="flex h-2 w-2 rounded-full bg-[#0066cc]" />
+        {/* SECTION HEADER */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
+          <div className="max-w-xl">
+            {/* Trust Badge */}
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-4"
+            >
+              <FiTrendingUp className="w-4 h-4 text-[#0066cc]" />
               <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                Curated Syllabus
+                Curated Learning
               </span>
             </motion.div>
 
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]">
+            {/* Title */}
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]"
+            >
               Explore Our Premium <br />
               <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
-                Learning Tracks.
+                Signature Masterclasses
               </span>
             </motion.h2>
-          </motion.div>
+          </div>
 
-          {/* Dynamic Filter Pills */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="flex flex-wrap gap-2 max-w-xl"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 border ${
-                  activeFilter === cat
-                    ? "bg-slate-900 border-slate-900 text-white shadow-md shadow-slate-900/10"
-                    : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Subtitle / CTA combo */}
+          <motion.div variants={fadeInUp} className="flex flex-col items-start md:items-end gap-3">
+            <p className="text-base text-slate-500 font-medium max-w-xs md:text-right leading-relaxed">
+              Taught exclusively by industry veterans shaping technology and creative design daily.
+            </p>
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* ASYMMETRIC BENTO GRID */}
-        <motion.div 
-          layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        {/* COURSES CARD GRID */}
+        <motion.div
+          variants={cardContainerVariant}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {filteredCourses.map((course) => (
+          {coursesData.map((course) => (
             <motion.div
-              layout
               key={course.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6, transition: { duration: 0.3 } }}
-              className={`group relative rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-2xl hover:border-slate-200/80 transition-all duration-300 overflow-hidden flex flex-col justify-between ${
-                course.size === "large" ? "lg:col-span-2" : "lg:col-span-1"
-              }`}
+              variants={cardVariant}
+              whileHover={{ y: -8, transition: { duration: 0.3, ease: fluidEase } }}
+              className="group relative bg-white border border-slate-200/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-blue-500/5 transition-shadow duration-300 flex flex-col h-full"
             >
-              {/* Image & Tag Area */}
-              <div className="relative w-full h-64 overflow-hidden bg-slate-100">
+              {/* Image & Badge Container */}
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
                 <img
                   src={course.image}
                   alt={course.title}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500 ease-[0.16, 1, 0.3, 1]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 
-                {/* Overlay Top Bar inside Card */}
-                <div className="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                  <span className={`px-3 py-1 rounded-lg text-xs font-bold border backdrop-blur-md ${course.badgeColor}`}>
+                {/* Custom Card Badge */}
+                <span className="absolute top-4 left-4 z-10 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm border border-slate-100 text-[11px] font-bold uppercase tracking-wider text-slate-800 shadow-sm">
+                  {course.badge}
+                </span>
+                
+                {/* Dark Vignette Overlay on Hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Card Body */}
+              <div className="p-6 flex flex-col flex-1">
+                {/* Meta details */}
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#0066cc] bg-blue-50 px-2.5 py-1 rounded-md">
                     {course.category}
                   </span>
-                  <div className="flex items-center gap-1 bg-white/90 backdrop-blur-md px-2 py-1 rounded-lg shadow-sm text-xs font-bold text-slate-800">
-                    <FiStar className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                    <span>{course.rating}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content Details Area */}
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-6">
-                <div className="space-y-3">
-                  <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug group-hover:text-[#0066cc] transition-colors duration-300">
-                    {course.title}
-                  </h3>
-                </div>
-
-                {/* Micro Metadata Row */}
-                <div className="flex flex-wrap items-center gap-y-2 gap-x-6 pt-4 border-t border-slate-50 text-sm font-medium text-slate-500">
-                  <div className="flex items-center gap-1.5">
-                    <FiClock className="w-4 h-4 text-slate-400" />
+                  <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
+                    <FiClock className="w-3.5 h-3.5 text-slate-400" />
                     <span>{course.duration}</span>
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <FiLayers className="w-4 h-4 text-slate-400" />
-                    <span>{course.level}</span>
+                </div>
+
+                {/* Course Title */}
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-snug mb-3 group-hover:text-[#0066cc] transition-colors duration-200">
+                  {course.title}
+                </h3>
+
+                {/* Star Ratings */}
+                <div className="flex items-center gap-1 mb-6">
+                  <div className="flex items-center gap-0.5 text-amber-400">
+                    {[...Array(5)].map((_, i) => (
+                      <FiStar key={i} className="w-3.5 h-3.5 fill-current" />
+                    ))}
+                  </div>
+                  <span className="text-xs font-bold text-slate-800 ml-1">{course.rating}</span>
+                  <span className="text-xs text-slate-400 font-medium">({course.reviews})</span>
+                </div>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-slate-100 mb-5 mt-auto" />
+
+                {/* Mentor Block & Action row */}
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">Instructor</p>
+                    <h4 className="text-sm font-bold text-slate-800 tracking-tight">{course.mentor}</h4>
+                    <p className="text-[11px] text-slate-500 font-medium">{course.role}</p>
+                  </div>
+
+                  {/* Elegant Dynamic Action Button */}
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 transition-all duration-300 group-hover:bg-gradient-to-tr group-hover:from-[#004499] group-hover:to-[#0066cc] group-hover:border-transparent group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-500/20">
+                    <FiArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
                   </div>
                 </div>
-              </div>
 
-              {/* Hover Action Corner Strip */}
-              <div className="absolute bottom-6 right-6 sm:bottom-8 sm:right-8 opacity-0 group-hover:opacity-100 scale-90 group-hover:scale-100 transition-all duration-300">
-                <div className="p-3 rounded-xl bg-gradient-to-r from-[#004499] to-[#0066cc] text-white shadow-lg shadow-blue-500/20">
-                  <FiArrowUpRight className="w-5 h-5" />
-                </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
-
-        {/* BOTTOM GLOBAL CALLOUT */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-            Looking for enterprise packages?{" "}
-            <a href="#contact" className="text-[#0066cc] underline hover:text-[#004499] font-bold ml-1 transition-colors">
-              Talk to our advisory team
-            </a>
-          </p>
-        </motion.div>
-
       </div>
     </section>
   );

@@ -18,10 +18,10 @@ export default function Home() {
       <AboutSection />
       <CoursesSection />
       <WhyChooseUsSection />
-      <ExploreMoreSection />
+      {/* <ExploreMoreSection /> */}
       <DownloadAppSection />
       <FAQSection />
-      <ContactSection />
+      {/* <ContactSection /> */}
       <CTASection />
       {/* <SegmentNavigator /> */}
     </div>

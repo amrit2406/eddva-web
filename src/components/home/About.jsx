@@ -108,7 +108,7 @@ export default function AboutUsSection() {
               <img
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600"
                 alt="Our Workspace"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                className="w-full h-full object-cover transition-all duration-300"
               />
             </motion.div>
 
@@ -140,7 +140,7 @@ export default function AboutUsSection() {
               <img
                 src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?q=80&w=600"
                 alt="Collaborative Session"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+                className="w-full h-full object-cover transition-all duration-300"
               />
             </motion.div>
 
