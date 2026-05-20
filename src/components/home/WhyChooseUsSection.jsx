@@ -9,7 +9,7 @@ const features = [
     title: "Hyper-Focused Curriculum",
     description: "We cut out the fluff. Every single lesson is engineered to deliver deep domain expertise in half the time of traditional certificates.",
     color: "from-blue-500/10 to-sky-500/5",
-    iconColor: "text-[#0066cc] bg-blue-50 border-blue-100",
+    iconColor: "text-[#0066cc] bg-blue-50 border-blue-100 shadow-xl scale-110", // Kept scaled state by default
     gradient: "from-[#0066cc] to-[#00a6ff]",
     lightGradient: "from-blue-500/20 to-sky-500/10",
   },
@@ -19,7 +19,7 @@ const features = [
     title: "Vetted Industry Architecture",
     description: "Learn directly from active Principal Engineers, Design Partners, and tech executives who build the systems you use daily.",
     color: "from-purple-500/10 to-indigo-500/5",
-    iconColor: "text-purple-600 bg-purple-50 border-purple-100",
+    iconColor: "text-purple-600 bg-purple-50 border-purple-100 shadow-xl scale-110", // Kept scaled state by default
     gradient: "from-purple-600 to-indigo-600",
     lightGradient: "from-purple-500/20 to-indigo-500/10",
   },
@@ -29,7 +29,7 @@ const features = [
     title: "Elite Alumni Network",
     description: "Gain lifetime access to an invite-only collective of high-performing builders, engineers, and creatives worldwide.",
     color: "from-emerald-500/10 to-teal-500/5",
-    iconColor: "text-emerald-600 bg-emerald-50 border-emerald-100",
+    iconColor: "text-emerald-600 bg-emerald-50 border-emerald-100 shadow-xl scale-110", // Kept scaled state by default
     gradient: "from-emerald-600 to-teal-600",
     lightGradient: "from-emerald-500/20 to-teal-500/10",
   },
@@ -64,14 +64,9 @@ export default function WhyChooseUsSection() {
     hidden: { opacity: 0, y: 60, scale: 0.95 },
     visible: {
       opacity: 1,
-      y: 0,
-      scale: 1,
+      y: -16, // Changed from 0 to -16 to anchor it in the elevated position
+      scale: 1.03, // Changed from 1 to 1.03 to anchor the hover scale
       transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
-    hover: {
-      y: -16,
-      scale: 1.03,
-      transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] },
     },
   };
 
@@ -148,25 +143,24 @@ export default function WhyChooseUsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4" // Added top padding to accommodate the permanently raised cards
         >
           {features.map((feat) => (
             <motion.div
               key={feat.id}
               variants={cardVariants}
-              whileHover="hover"
-              className="group relative h-full rounded-2xl border border-slate-100 bg-white p-8 shadow-lg hover:shadow-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden"
+              className="group relative h-full rounded-2xl border border-slate-100 bg-white p-8 shadow-2xl transition-all duration-500 flex flex-col justify-between overflow-hidden"
             >
-              {/* Radial Background Light Glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feat.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+              {/* Radial Background Light Glow - Forced opacity to 100 */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feat.color} opacity-100 transition-opacity duration-500 pointer-events-none`} />
               
-              {/* Animated gradient border on hover */}
-              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feat.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`} />
+              {/* Animated gradient border - Forced opacity to 10 */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${feat.gradient} opacity-10 transition-opacity duration-500 pointer-events-none`} />
 
               {/* Content */}
               <div className="space-y-6 relative z-10">
-                {/* Icon with hover animation */}
-                <div className={`p-4 w-fit rounded-xl border shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl ${feat.iconColor}`}>
+                {/* Icon with persistent hover state style values applied by default */}
+                <div className={`p-4 w-fit rounded-xl border transition-all duration-300 ${feat.iconColor}`}>
                   {feat.icon}
                 </div>
 
@@ -180,47 +174,18 @@ export default function WhyChooseUsSection() {
                 </div>
               </div>
 
-              {/* Bottom Check Tag */}
+              {/* Bottom Check Tag - Set background and text styles directly to active states */}
               <div className="pt-6 mt-6 border-t border-slate-50 flex items-center gap-2 text-xs font-bold text-slate-400 tracking-wider uppercase relative z-10">
-                <span className="flex items-center justify-center p-1 rounded-full bg-slate-100 text-slate-600 group-hover:bg-[#0066cc] group-hover:text-white transition-all duration-300">
+                {/* <span className="flex items-center justify-center p-1 rounded-full bg-[#0066cc] text-white transition-all duration-300">
                   <FiCheck className="w-3 h-3" />
                 </span>
-                <span>Verified Standard</span>
+                <span>Verified Standard</span> */}
               </div>
 
-              {/* Decorative corner accent */}
-              <div className={`absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl ${feat.lightGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+              {/* Decorative corner accent - Forced opacity to 100 */}
+              <div className={`absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl ${feat.lightGradient} opacity-100 transition-opacity duration-500 pointer-events-none`} />
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Bottom Trust Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="mt-20 sm:mt-28 pt-12 border-t border-slate-100"
-        >
-          <div className="text-center">
-            <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-8">
-              Trusted by engineers at
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-8 sm:gap-12">
-              {['Google', 'Meta', 'Stripe', 'Netflix', 'Airbnb'].map((company, idx) => (
-                <motion.div
-                  key={company}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 + idx * 0.1 }}
-                  className="text-lg sm:text-xl font-black text-slate-300 hover:text-slate-400 transition-colors duration-300"
-                >
-                  {company}
-                </motion.div>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
       </div>

@@ -12,7 +12,7 @@ import FAQSection from '../components/home/FAQSection';
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-10">
       {/* Hero Section */}
       <Hero />
       <AboutSection />

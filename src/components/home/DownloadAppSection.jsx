@@ -91,7 +91,7 @@ export default function DownloadAppSection() {
             </motion.p>
 
             {/* Feature Grid */}
-            <motion.div 
+            {/* <motion.div 
               variants={staggerContainer}
               className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
@@ -108,10 +108,10 @@ export default function DownloadAppSection() {
                   <span className="text-sm font-bold text-slate-700">{feature.text}</span>
                 </motion.div>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             {/* Review Badges */}
-            <motion.div 
+            {/* <motion.div 
               variants={fadeInUp}
               className="flex flex-wrap gap-4"
             >
@@ -131,7 +131,7 @@ export default function DownloadAppSection() {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </motion.div> */}
 
             {/* App Store Buttons */}
             <motion.div 
@@ -179,7 +179,7 @@ export default function DownloadAppSection() {
             </motion.div>
 
             {/* Download Stats */}
-            <motion.div 
+            {/* <motion.div 
               variants={fadeInUp}
               className="flex items-center gap-6 pt-4 border-t border-slate-200"
             >
@@ -197,7 +197,7 @@ export default function DownloadAppSection() {
                 <div className="text-2xl font-black text-slate-900">4.8★</div>
                 <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Average Rating</div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
           </motion.div>
 
