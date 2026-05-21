@@ -106,7 +106,7 @@ export default function CoursesSection() {
               className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.1]"
             >
               Explore Our Premium <br />
-              <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+              <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
                 Signature Masterclasses
               </span>
             </motion.h2>

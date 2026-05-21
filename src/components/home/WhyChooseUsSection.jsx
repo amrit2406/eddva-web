@@ -107,7 +107,7 @@ export default function WhyChooseUsSection() {
             className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6"
           >
             Why industry leaders
-            <span className="block bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+            <span className="font-spicy block bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
               choose our platform
             </span>
           </motion.h2>

@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
 
 const leftLinks = [
+  { label: "Home", to: "/" },
+  { label: "About us", to: "/about" },
   { label: "Courses", to: "/courses" },
-  { label: "Mentors", to: "/mentors" },
 ];
 
 const rightLinks = [
+  { label: "Career", to: "/career" },
+  // { label: "Mentors", to: "/mentors" },
   { label: "Login", to: "/login" },
   // { label: "Resources", to: "/resources" },
 ];
@@ -22,7 +25,7 @@ export default function SplitNavbar() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="fixed top-0 left-0 w-full z-50 bg-white border-b border-slate-200"
+        className="fixed top-0 left-0 w-full z-50 bg-white border-b border-blue-200"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex items-center justify-between h-20">
@@ -51,7 +54,7 @@ export default function SplitNavbar() {
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-8">
               {rightLinks.map((item) => (
                 <Link
                   key={item.to}

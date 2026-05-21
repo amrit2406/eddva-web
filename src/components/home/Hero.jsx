@@ -119,9 +119,48 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen w-full bg-white text-slate-900 overflow-hidden flex flex-col justify-between pt-24 pb-12 px-6 sm:px-12">
-      {/* Background Decorative Grid Subtle Effect */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
+        {/* Center Glow */}
+        {/* <div className="absolute w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" /> */}
 
+        {/* Outer Dashed Ring */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute w-[140%] h-[140%] rounded-full border border-dashed border-blue-400/30"
+          style={{ willChange: "transform" }}
+        />
+
+        {/* Middle Ring */}
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute w-[115%] h-[115%] rounded-full border border-purple-400/30"
+          style={{ willChange: "transform" }}
+        />
+
+        {/* Inner Pulse */}
+        {/* <motion.div
+          animate={{
+            scale: [1, 1.08, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute w-64 h-64 rounded-full border border-cyan-300/10"
+        /> */}
+      </div>
       {/* Main Container */}
       <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col items-center justify-center relative z-10 mt-12">
         {/* THE CREATIVE INTERACTIVE ARCH */}
@@ -192,7 +231,7 @@ export default function HeroSection() {
             className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.1] mb-6"
           >
             Smarter Learning. <br />
-            <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+            <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
               Brighter Futures.
             </span>
           </motion.h1>
@@ -202,7 +241,8 @@ export default function HeroSection() {
             variants={fadeInUp}
             className="text-base sm:text-lg text-slate-500 font-medium max-w-xl mx-auto leading-relaxed mb-10"
           >
-            "Eddva is not built for average learning. It is designed for those who seek precision, clarity, and an edge".
+            "Eddva is not built for average learning. It is designed for those
+            who seek precision, clarity, and an edge".
           </motion.p>
 
           {/* Dual Action CTAs */}

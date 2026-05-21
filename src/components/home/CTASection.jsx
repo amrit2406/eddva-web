@@ -77,7 +77,7 @@ export default function CTASection() {
           className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 leading-[1.1]"
         >
           Ready to rewrite your <br />
-          <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+          <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
             technical trajectory?
           </span>
         </motion.h2>

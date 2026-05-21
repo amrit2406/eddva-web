@@ -48,7 +48,7 @@ export default function AboutUsSection() {
             {/* Section H2 Heading */}
             <motion.h2 variants={fadeInUp} className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.15]">
               We bridge the gap between <br />
-              <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+              <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
                 Ambition and Mastery.
               </span>
             </motion.h2>

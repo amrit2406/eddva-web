@@ -81,7 +81,7 @@ export default function FAQSection() {
             className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 mb-4"
           >
             Have Questions?{" "}
-            <span className="bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
+            <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
               We’ve Got Answers.
             </span>
           </motion.h2>
