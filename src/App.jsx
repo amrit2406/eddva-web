@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import AboutPage from "./pages/AboutP";
+import CoursesPage from "./pages/CoursesP";
+import CareersPage from "./pages/CareersP";
 
 function App() {
 
@@ -19,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/courses" element={<CoursesPage />} />
+            <Route path="/career" element={<CareersPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>

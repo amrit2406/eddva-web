@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { FiArrowUpRight, FiMenu, FiX } from "react-icons/fi";
+import logo from "../assets/logo.svg";
 
 const leftLinks = [
   { label: "Home", to: "/" },
@@ -47,7 +48,7 @@ export default function SplitNavbar() {
             <div className="flex items-center gap-3 p-1">
               <div className="w-44 h-16">
                 <img
-                  src="https://eddva.in/assets/eddva-logo-BvXMVogN.svg"
+                  src={logo}
                   alt="Eddva Logo"
                   className="w-full h-full object-cover"
                 />

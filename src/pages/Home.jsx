@@ -9,6 +9,7 @@ import DownloadAppSection from '../components/home/DownloadAppSection';
 import CTASection from '../components/home/CTASection';
 import ContactSection from '../components/home/ContactUs';
 import FAQSection from '../components/home/FAQSection';
+import Lanyard from '../components/home/Lanyard';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <AboutSection />
       <CoursesSection />
       <WhyChooseUsSection />
+      {/* <Lanyard /> */}
       {/* <ExploreMoreSection /> */}
       <DownloadAppSection />
       <FAQSection />
