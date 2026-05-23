@@ -261,7 +261,7 @@ export default function HeroSection() {
           className="text-center max-w-3xl pt-52 sm:pt-48 relative z-20"
         >
           {/* Trust Badge */}
-          <motion.div
+          {/* <motion.div
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-6"
           >
@@ -269,7 +269,7 @@ export default function HeroSection() {
             <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
               Next Generation Learning
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main H1 Heading */}
           <motion.h1
@@ -285,10 +285,16 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={fadeInUp}
-            className="text-base sm:text-lg text-slate-500 font-medium max-w-xl mx-auto leading-relaxed mb-10"
+            className="text-base sm:text-lg text-slate-500 font-medium max-3w-xl mx-auto leading-relaxed mb-10"
           >
             "Eddva is not built for average learning. It is designed for those
             who seek precision, clarity, and an edge".
+          </motion.p>
+          <motion.p
+            variants={fadeInUp}
+            className="text-base sm:text-lg text-slate-500 font-medium max-3w-xl mx-auto leading-relaxed mb-10"
+          >
+            Powered by advanced AI, Eddva creates an experience that is deeply personalized, intelligently curated, and relentlessly focused on results. Every interaction is intentional. Every recommendation is refined. You don't just study here—you evolve with purpose.
           </motion.p>
 
           {/* Dual Action CTAs */}
@@ -316,7 +322,7 @@ export default function HeroSection() {
                 <FiPlay className="w-4 h-4 fill-white" />
               </span>
 
-              <span>Meet Our Mentors</span>
+              <span>Explore Courses</span>
             </Link>
           </motion.div>
         </motion.div>

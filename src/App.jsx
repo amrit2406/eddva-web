@@ -9,6 +9,7 @@ import RegisterPage from "./pages/Register";
 import AboutPage from "./pages/AboutP";
 import CoursesPage from "./pages/CoursesP";
 import CareersPage from "./pages/CareersP";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
   );

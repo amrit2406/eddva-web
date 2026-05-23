@@ -117,9 +117,7 @@ export default function CoursesPage() {
   return (
     <main className="w-full bg-white text-slate-900 overflow-hidden">
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          1. HERO — full-bleed split layout with parallax
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* hero */}
       <section ref={heroRef} className="relative min-h-screen flex overflow-hidden bg-slate-950">
 
         {/* Left panel — text */}
@@ -215,10 +213,7 @@ export default function CoursesPage() {
         </motion.div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          2. COURSE METHODOLOGY — highlight section
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-20 px-8 sm:px-16 lg:px-24 bg-white border-b border-slate-100">
+      {/* <section className="relative py-20 px-8 sm:px-16 lg:px-24 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
           {features.map((f, i) => (
              <motion.div
@@ -239,11 +234,9 @@ export default function CoursesPage() {
              </motion.div>
           ))}
         </div>
-      </section>
+      </section> */}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          3. COURSES GRID — interactive filter and cards
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* courses */}
       <section id="courses-grid" className="relative py-24 sm:py-32 px-8 sm:px-16 lg:px-24 overflow-hidden bg-slate-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px)] bg-[size:6rem] opacity-40 pointer-events-none" />
         
@@ -362,9 +355,7 @@ export default function CoursesPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          4. CTA — full-width editorial closer
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* cta */}
       <section className="relative py-24 sm:py-32 px-8 sm:px-16 lg:px-24 overflow-hidden bg-white border-t border-slate-100">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-blue-50/60 to-transparent pointer-events-none" />
 
@@ -378,10 +369,6 @@ export default function CoursesPage() {
               transition={{ duration: 0.8, ease }}
               className="lg:col-span-7"
             >
-              <div className="flex items-center gap-3 mb-6">
-                <span className="h-px w-8 bg-[#0066cc]" />
-                <span className="text-xs font-bold tracking-[0.2em] text-[#0066cc] uppercase">Ready to start?</span>
-              </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
                 Don't just learn.
                 <br />

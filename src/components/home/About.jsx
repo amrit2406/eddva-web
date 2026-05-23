@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiArrowUpRight, FiCheckCircle, FiTarget, FiEye } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default function AboutUsSection() {
   // Animation Variants matching Hero easing
@@ -28,7 +29,6 @@ export default function AboutUsSection() {
 
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
-          
           {/* LEFT: CONTENT & MISSION */}
           <motion.div
             initial="hidden"
@@ -38,7 +38,10 @@ export default function AboutUsSection() {
             className="lg:col-span-6 space-y-8"
           >
             {/* Trust Badge */}
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm">
+            <motion.div
+              variants={fadeInUp}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm"
+            >
               <span className="flex h-2 w-2 rounded-full bg-emerald-500" />
               <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
                 Our Story & Vision
@@ -46,7 +49,10 @@ export default function AboutUsSection() {
             </motion.div>
 
             {/* Section H2 Heading */}
-            <motion.h2 variants={fadeInUp} className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.15]">
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 leading-[1.15]"
+            >
               We bridge the gap between <br />
               <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
                 Ambition and Mastery.
@@ -54,19 +60,33 @@ export default function AboutUsSection() {
             </motion.h2>
 
             {/* Paragraph Text */}
-            <motion.p variants={fadeInUp} className="text-base sm:text-lg text-slate-500 font-medium leading-relaxed max-w-xl">
-              Founded by industry veterans, our platform was built on a simple conviction: premium education shouldn't be passive. We design structured learning tracks that transform complex theories into actionable career superpowers.
+            <motion.p
+              variants={fadeInUp}
+              className="text-base sm:text-lg text-slate-500 font-medium leading-relaxed max-w-xl"
+            >
+              Founded by industry veterans, our platform was built on a simple
+              conviction: premium education shouldn't be passive. We design
+              structured learning tracks that transform complex theories into
+              actionable career superpowers.
             </motion.p>
 
             {/* Core Value Pillars */}
-            <motion.div variants={fadeInUp} className="space-y-4 border-t border-slate-100 pt-6">
+            <motion.div
+              variants={fadeInUp}
+              className="space-y-4 border-t border-slate-100 pt-6"
+            >
               <div className="flex items-start gap-3">
                 <div className="mt-1 p-1 rounded-md bg-emerald-50 text-emerald-600">
                   <FiTarget className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Curated Excellence</h4>
-                  <p className="text-sm text-slate-500 font-medium">No fluff. Only highly polished, battle-tested knowledge from global architects.</p>
+                  <h4 className="font-bold text-slate-900">
+                    Curated Excellence
+                  </h4>
+                  <p className="text-sm text-slate-500 font-medium">
+                    No fluff. Only highly polished, battle-tested knowledge from
+                    global architects.
+                  </p>
                 </div>
               </div>
 
@@ -75,19 +95,29 @@ export default function AboutUsSection() {
                   <FiEye className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900">Community-First Growth</h4>
-                  <p className="text-sm text-slate-500 font-medium">Connect and build with an elite tier of high-achieving peer networks.</p>
+                  <h4 className="font-bold text-slate-900">
+                    Community-First Growth
+                  </h4>
+                  <p className="text-sm text-slate-500 font-medium">
+                    Connect and build with an elite tier of high-achieving peer
+                    networks.
+                  </p>
                 </div>
               </div>
             </motion.div>
 
             {/* Action CTA Button */}
             <motion.div variants={fadeInUp} className="pt-4">
-              <button className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#004499] to-[#0066cc] text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden">
+              <Link
+                to="/about"
+                className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#004499] to-[#0066cc] text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-blue-500/20 overflow-hidden"
+              >
                 <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">Read Our Manifesto</span>
+
+                <span className="relative z-10">More about us</span>
+
                 <FiArrowUpRight className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
 
@@ -124,8 +154,12 @@ export default function AboutUsSection() {
               <div className="p-2 w-fit rounded-lg bg-white shadow-sm text-purple-600 mb-4">
                 <FiCheckCircle className="w-5 h-5" />
               </div>
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight">100%</h3>
-              <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">Vetted Mentors</p>
+              <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+                100%
+              </h3>
+              <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
+                Vetted Mentors
+              </p>
             </motion.div>
 
             {/* Bento Card 3: Landscape Foreground Image */}
@@ -149,11 +183,14 @@ export default function AboutUsSection() {
               initial={{ opacity: 0, scale: 0.5, rotate: "-15deg" }}
               whileInView={{ opacity: 0.9, scale: 1, rotate: "-12deg" }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              transition={{
+                duration: 1.2,
+                ease: [0.16, 1, 0.3, 1],
+                delay: 0.4,
+              }}
               className="absolute left-4 bottom-14 w-20 h-24 rounded-2xl bg-gradient-to-tr from-amber-100 to-orange-50 border border-amber-200/30 shadow-md hidden sm:block"
             />
           </div>
-
         </div>
       </div>
     </section>
