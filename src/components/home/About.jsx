@@ -38,7 +38,7 @@ export default function AboutUsSection() {
             className="lg:col-span-6 space-y-8"
           >
             {/* Trust Badge */}
-            <motion.div
+            {/* <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm"
             >
@@ -46,7 +46,7 @@ export default function AboutUsSection() {
               <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
                 Our Story & Vision
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Section H2 Heading */}
             <motion.h2
@@ -158,7 +158,7 @@ export default function AboutUsSection() {
                 100%
               </h3>
               <p className="text-xs font-semibold text-slate-500 mt-1 uppercase tracking-wider">
-                Vetted Mentors
+                Best in class
               </p>
             </motion.div>
 

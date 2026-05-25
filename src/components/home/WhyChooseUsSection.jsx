@@ -91,7 +91,7 @@ export default function WhyChooseUsSection() {
           className="text-center mb-20 sm:mb-28"
         >
           {/* Trust Badge */}
-          <motion.div 
+          {/* <motion.div 
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-8"
           >
@@ -99,7 +99,7 @@ export default function WhyChooseUsSection() {
             <span className="text-xs font-semibold tracking-widest text-slate-600 uppercase">
               The Platform Advantage
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Main Headline */}
           <motion.h2 
@@ -121,7 +121,7 @@ export default function WhyChooseUsSection() {
           </motion.p>
 
           {/* Value Proposition Pills */}
-          <motion.div 
+          {/* <motion.div 
             variants={fadeInUp}
             className="flex flex-wrap justify-center gap-3 sm:gap-4"
           >
@@ -134,7 +134,7 @@ export default function WhyChooseUsSection() {
                 <span className="text-sm font-bold text-slate-700">{prop.label}</span>
               </div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Features Grid */}

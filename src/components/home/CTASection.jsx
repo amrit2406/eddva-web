@@ -56,7 +56,7 @@ export default function CTASection() {
 
       <div className="max-w-4xl mx-auto w-full text-center relative z-20 space-y-8">
         {/* Trust Badge */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,7 +66,7 @@ export default function CTASection() {
           <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
             Limited Cohort Capacity
           </span>
-        </motion.div>
+        </motion.div> */}
 
         {/* Main Title Head */}
         <motion.h2 

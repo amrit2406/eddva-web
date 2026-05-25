@@ -90,7 +90,7 @@ export default function DownloadAppSection() {
             className="lg:col-span-5 space-y-8"
           >
             {/* Trust Badge */}
-            <motion.div
+            {/* <motion.div
               variants={fadeInUp}
               className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white border border-slate-200/80 shadow-lg shadow-slate-200/50"
             >
@@ -102,7 +102,7 @@ export default function DownloadAppSection() {
               <span className="text-xs font-bold tracking-[0.2em] text-slate-600 uppercase">
                 Free Mobile App
               </span>
-            </motion.div>
+            </motion.div> */}
 
             {/* Main Headline */}
             <motion.h2

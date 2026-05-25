@@ -65,7 +65,7 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           {/* Badge */}
-          <motion.div
+          {/* <motion.div
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-4"
           >
@@ -73,7 +73,7 @@ export default function FAQSection() {
             <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
               Common Questions
             </span>
-          </motion.div>
+          </motion.div> */}
 
           {/* Title */}
           <motion.h2

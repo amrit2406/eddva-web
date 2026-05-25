@@ -10,6 +10,8 @@ import AboutPage from "./pages/AboutP";
 import CoursesPage from "./pages/CoursesP";
 import CareersPage from "./pages/CareersP";
 import ScrollToTop from "./components/ScrollToTop";
+import CustomCursor from "./components/Cursor";
+import { CustomLink } from "./components/MagneticEffect";
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
+        <CustomCursor />
 
         <main className="flex-1">
           <Routes>

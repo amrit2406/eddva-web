@@ -90,15 +90,7 @@ export default function CoursesSection() {
         >
           <div className="max-w-xl">
             {/* Trust Badge */}
-            <motion.div
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80 shadow-sm mb-4"
-            >
-              <FiTrendingUp className="w-4 h-4 text-[#0066cc]" />
-              <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
-                Curated Learning
-              </span>
-            </motion.div>
+            {/* <motion.di  */}
 
             {/* Title */}
             <motion.h2
