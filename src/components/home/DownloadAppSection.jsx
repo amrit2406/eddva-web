@@ -11,6 +11,8 @@ import {
   FiTrendingUp,
 } from "react-icons/fi";
 import app from "../../assets/app.png";
+import apple from "../../assets/appstore.png";
+import google from "../../assets/playstore.png";
 
 export default function DownloadAppSection() {
   const fadeInUp = {
@@ -173,7 +175,11 @@ export default function DownloadAppSection() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row items-center gap-4 pt-4"
             >
-              <motion.button
+              {/* App Store */}
+              <motion.a
+                href="https://apps.apple.com/app/idYOUR_APP_ID"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-4 bg-slate-950 text-white px-7 py-4 rounded-2xl font-bold shadow-xl shadow-slate-900/20 hover:shadow-2xl hover:shadow-slate-900/30 transition-all duration-300 overflow-hidden min-w-[220px]"
@@ -182,19 +188,30 @@ export default function DownloadAppSection() {
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10"
                 >
-                  <FiSmartphone className="w-5 h-5 text-[#0066cc]" />
+                  <img
+                    src={apple}
+                    alt="Apple"
+                    className="w-8 h-8 object-contain"
+                  />
                 </motion.div>
+
                 <div className="text-left leading-tight flex-grow">
                   <span className="block text-[9px] text-slate-400 font-bold uppercase tracking-wider">
                     Download on the
                   </span>
                   <span className="text-sm font-black">App Store</span>
                 </div>
-                <FiArrowUpRight className="w-4 h-4 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0066cc] to-[#00a6ff] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-              </motion.button>
 
-              <motion.button
+                <FiArrowUpRight className="w-4 h-4 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0066cc] to-[#00a6ff] opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+              </motion.a>
+
+              {/* Google Play */}
+              <motion.a
+                href="https://play.google.com/store/apps/details?id=YOUR_PACKAGE_NAME"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="group w-full sm:w-auto inline-flex items-center justify-center gap-4 border-2 border-slate-200 bg-white text-slate-700 px-7 py-4 rounded-2xl font-bold hover:bg-slate-50 hover:border-[#0066cc]/50 hover:shadow-lg transition-all duration-300 min-w-[220px]"
@@ -203,21 +220,22 @@ export default function DownloadAppSection() {
                   whileHover={{ scale: 1.1, rotate: -5 }}
                   className="flex items-center justify-center w-10 h-10 rounded-xl bg-slate-50"
                 >
-                  <svg
-                    className="w-5 h-5 text-slate-700 fill-current"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M3.609 1.814L13.783 12 3.609 22.186c-.183.183-.314.419-.374.678l13.447-7.768 3.565-2.06c.712-.411.712-1.442 0-1.853l-3.565-2.06L3.235 1.361c.06.259.191.495.374.678z" />
-                  </svg>
+                  <img
+                    src={google}
+                    alt="Google Play"
+                    className="w-8 h-8 object-contain"
+                  />
                 </motion.div>
+
                 <div className="text-left leading-tight flex-grow">
                   <span className="block text-[9px] text-slate-400 font-bold uppercase tracking-wider">
                     Get it on
                   </span>
                   <span className="text-sm font-black">Google Play</span>
                 </div>
+
                 <FiArrowUpRight className="w-4 h-4 text-slate-400 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             {/* Download Stats */}
@@ -267,7 +285,7 @@ export default function DownloadAppSection() {
                     Lesson Complete
                   </div>
                   <div className="text-sm font-black text-slate-900">
-                    Microservices 101
+                    Newton's law
                   </div>
                 </div>
               </div>
@@ -284,15 +302,15 @@ export default function DownloadAppSection() {
               className="absolute bottom-20 right-8 p-4 bg-white rounded-2xl border border-slate-200 shadow-xl z-20 hidden lg:block"
             >
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-[#0066cc]/10 text-[#0066cc] shadow-sm">
+                {/* <div className="p-2 rounded-lg bg-[#0066cc]/10 text-[#0066cc] shadow-sm">
                   <FiZap className="w-5 h-5" />
-                </div>
+                </div> */}
                 <div>
                   <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     New Lesson
                   </div>
                   <div className="text-sm font-black text-slate-900">
-                    System Design
+                    Matrix Multiplication
                   </div>
                 </div>
               </div>

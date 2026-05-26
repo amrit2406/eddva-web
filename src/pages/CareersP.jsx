@@ -1,4 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 import {
   FiArrowUpRight,
@@ -18,50 +19,54 @@ import {
 const ease = [0.16, 1, 0.3, 1];
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const roles = [
+const exams = [
   {
     id: 1,
-    title: "Senior Full-Stack Engineer",
-    department: "Engineering",
-    location: "Remote (Global)",
-    type: "Full-Time",
-    description: "Help us scale our learning platform. You'll work with React, Node.js, and AWS to build experiences that handle millions of requests.",
-    color: "from-blue-500 to-cyan-400",
-    bg: "bg-blue-50",
-    text: "text-blue-600",
+    title: "UPSC Civil Services (Prelims)",
+    category: "Civil Services",
+    date: "May 31, 2026",
+    daysLeft: 5,
+    description: "National level competitive exam for recruitment to various Civil Services of the Government of India.",
+    bg: "bg-amber-50",
+    text: "text-amber-700",
+    border: "group-hover:border-amber-500/30",
+    shadow: "group-hover:shadow-amber-500/10",
   },
   {
     id: 2,
-    title: "Product Designer",
-    department: "Design",
-    location: "New York or Remote",
-    type: "Full-Time",
-    description: "Shape the future of how people learn online. You'll lead UI/UX for our core curriculum delivery engine.",
-    color: "from-violet-500 to-fuchsia-400",
-    bg: "bg-violet-50",
-    text: "text-violet-600",
+    title: "IIT JEE Advanced",
+    category: "Engineering",
+    date: "June 07, 2026",
+    daysLeft: 12,
+    description: "Elite engineering entrance assessment for top-tier Indian Institutes of Technology.",
+    bg: "bg-blue-50",
+    text: "text-blue-700",
+    border: "group-hover:border-blue-500/30",
+    shadow: "group-hover:shadow-blue-500/10",
   },
   {
     id: 3,
-    title: "Curriculum Lead - AI/ML",
-    department: "Product",
-    location: "London or Remote",
-    type: "Full-Time",
-    description: "Design our new AI engineering track. You'll partner with industry experts to create rigorous, project-based content.",
-    color: "from-emerald-500 to-teal-400",
-    bg: "bg-emerald-50",
-    text: "text-emerald-600",
+    title: "CAT (Common Admission Test)",
+    category: "Management",
+    date: "November 29, 2026",
+    daysLeft: 187,
+    description: "Prerequisite for admission into various management programmes at the IIMs and premier business schools.",
+    bg: "bg-purple-50",
+    text: "text-purple-700",
+    border: "group-hover:border-purple-500/30",
+    shadow: "group-hover:shadow-purple-500/10",
   },
   {
     id: 4,
-    title: "Growth Marketing Manager",
-    department: "Marketing",
-    location: "Remote (US)",
-    type: "Full-Time",
-    description: "Drive student acquisition and community engagement across global markets through data-driven campaigns.",
-    color: "from-amber-500 to-orange-400",
-    bg: "bg-amber-50",
-    text: "text-amber-600",
+    title: "NEET UG",
+    category: "Medical",
+    date: "May 03, 2027",
+    daysLeft: 342,
+    description: "All India pre-medical entrance test for students wishing to pursue undergraduate medical courses.",
+    bg: "bg-emerald-50",
+    text: "text-emerald-700",
+    border: "group-hover:border-emerald-500/30",
+    shadow: "group-hover:shadow-emerald-500/10",
   }
 ];
 
@@ -95,20 +100,18 @@ export default function CareersPage() {
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const [activeDept, setActiveDept] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("All");
   
-  const filteredRoles = activeDept === "All" 
-    ? roles 
-    : roles.filter(r => r.department === activeDept);
+  const filteredExams = activeCategory === "All" 
+    ? exams 
+    : exams.filter(e => e.category === activeCategory);
 
-  const departments = ["All", "Engineering", "Design", "Product", "Marketing"];
+  const categories = ["All", "Civil Services", "Engineering", "Management", "Medical"];
 
   return (
     <main className="w-full bg-white text-slate-900 overflow-hidden">
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          1. HERO — full-bleed split layout with parallax
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/*  HERO */}
       <section ref={heroRef} className="relative min-h-screen flex overflow-hidden bg-slate-950">
 
         {/* Left panel — text */}
@@ -133,10 +136,10 @@ export default function CareersPage() {
             transition={{ duration: 0.9, ease, delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-black text-white leading-[1.0] tracking-tight mb-8"
           >
-            Join the mission.
+            Your Next Big
             <br />
             <span className="font-spicy bg-gradient-to-r from-[#0066cc] via-[#00a6ff] to-cyan-300 bg-clip-text text-transparent">
-              Build the future.
+              Exam is Coming.
             </span>
           </motion.h1>
 
@@ -146,10 +149,10 @@ export default function CareersPage() {
             transition={{ duration: 0.8, ease, delay: 0.2 }}
             className="text-slate-400 text-lg leading-relaxed max-w-md mb-10 font-medium"
           >
-            We're a team of engineers, designers, and educators obsessed with fixing how the world learns. Come do your life's best work with us.
+            Stay ahead of every important exam date — JEE, NEET, CBSE, ICSE, State Boards and more. Start your preparation today.
           </motion.p>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease, delay: 0.3 }}
@@ -165,7 +168,7 @@ export default function CareersPage() {
               <span className="relative z-10">View Open Roles</span>
               <FiArrowUpRight className="relative z-10 w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </button>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* Right panel — image mosaic */}
@@ -204,10 +207,8 @@ export default function CareersPage() {
         </motion.div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          2. PERKS & BENEFITS — highlight section
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section className="relative py-24 px-8 sm:px-16 lg:px-24 bg-white border-b border-slate-100">
+      {/*PERKS & BENEFITS */}
+      {/* <section className="relative py-24 px-8 sm:px-16 lg:px-24 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto">
           
           <div className="text-center mb-16">
@@ -240,17 +241,15 @@ export default function CareersPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          3. OPEN ROLES — interactive filter and list
-      ══════════════════════════════════════════════════════════════════════ */}
-      <section id="open-roles" className="relative py-24 sm:py-32 px-8 sm:px-16 lg:px-24 overflow-hidden bg-slate-50">
+      {/* UPCOMING EXAMS */}
+      <section id="upcoming-exams" className="relative py-24 sm:py-32 px-8 sm:px-16 lg:px-24 overflow-hidden bg-slate-50">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px)] bg-[size:6rem] opacity-40 pointer-events-none" />
         
         <div className="max-w-5xl mx-auto relative z-10">
           
-          {/* Header & Filters */}
+          {/* Header & Category Filters */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -260,17 +259,17 @@ export default function CareersPage() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="h-px w-8 bg-[#0066cc]" />
-                <span className="text-xs font-bold tracking-[0.2em] text-[#0066cc] uppercase">Open Positions</span>
+                <span className="text-xs font-bold tracking-[0.2em] text-[#0066cc] uppercase">Stay Ahead</span>
               </div>
               <h2 className="text-4xl sm:text-5xl font-black text-slate-900 leading-[1.1] tracking-tight">
-                Find your
+                Upcoming
                 <span className="font-spicy ml-3 bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
-                  next big thing.
+                  Exams Tracker.
                 </span>
               </h2>
             </motion.div>
 
-            {/* Tabs */}
+            {/* Category Tabs */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -278,71 +277,84 @@ export default function CareersPage() {
               transition={{ duration: 0.7, ease }}
               className="flex flex-wrap gap-2"
             >
-              {departments.map((dept, i) => (
+              {categories.map((cat, i) => (
                 <button
                   key={i}
-                  onClick={() => setActiveDept(dept)}
+                  onClick={() => setActiveCategory(cat)}
                   className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
-                    activeDept === dept
+                    activeCategory === cat
                       ? "bg-slate-900 text-white shadow-md"
                       : "bg-white border border-slate-200 text-slate-500 hover:border-slate-300 hover:text-slate-900"
                   }`}
                 >
-                  {dept}
+                  {cat}
                 </button>
               ))}
             </motion.div>
           </div>
 
-          {/* Roles List */}
+          {/* Exams List */}
           <div className="flex flex-col gap-4">
-            {filteredRoles.map((role, i) => (
+            {filteredExams.map((exam) => (
               <motion.div
-                key={role.id}
+                key={exam.id}
                 layout
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, ease }}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 hover:shadow-xl hover:shadow-blue-500/10 hover:border-[#0066cc]/30 transition-all duration-300"
+                className={`group flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 hover:shadow-xl transition-all duration-300 ${exam.shadow} ${exam.border}`}
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className={`px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider ${role.bg} ${role.text}`}>
-                      {role.department}
+                    <span className={`px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider ${exam.bg} ${exam.text}`}>
+                      {exam.category}
                     </span>
+                    
+                    {exam.daysLeft <= 15 && (
+                      <span className="px-2.5 py-1 rounded-md text-[10px] font-black uppercase tracking-wider bg-rose-50 text-rose-600 animate-pulse">
+                        Exam Approaching
+                      </span>
+                    )}
                   </div>
+                  
                   <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 group-hover:text-[#0066cc] transition-colors">
-                    {role.title}
+                    {exam.title}
                   </h3>
+                  
                   <p className="text-slate-500 text-sm font-medium leading-relaxed max-w-2xl mb-4">
-                    {role.description}
+                    {exam.description}
                   </p>
                   
                   <div className="flex items-center gap-5 text-xs font-semibold text-slate-500">
                     <div className="flex items-center gap-1.5">
-                      <FiMapPin className="w-4 h-4 text-[#0066cc]" />
-                      {role.location}
+                      <FiClock className="w-4 h-4 text-[#0066cc]" />
+                      Date: {exam.date}
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <FiClock className="w-4 h-4 text-[#0066cc]" />
-                      {role.type}
+                      <span className="w-2 h-2 rounded-full bg-orange-500" />
+                      {exam.daysLeft} Days Left
                     </div>
                   </div>
                 </div>
 
+                {/* React Router Link Action */}
                 <div className="flex-shrink-0">
-                  <button className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 text-white hover:bg-[#0066cc] px-6 py-3 rounded-xl font-bold text-sm transition-colors duration-300">
-                    Apply Now
+                  <Link 
+                    to="/study-material" 
+                    state={{ examId: exam.id, examTitle: exam.title }}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 text-white hover:bg-[#0066cc] px-6 py-3 rounded-xl font-bold text-sm transition-colors duration-300 shadow-sm"
+                  >
+                    Start Prep
                     <FiArrowUpRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
             
-            {filteredRoles.length === 0 && (
-              <div className="text-center py-20">
-                <p className="text-slate-500 font-medium">No open roles in this department right now. Check back later!</p>
+            {filteredExams.length === 0 && (
+              <div className="text-center py-20 bg-white border border-dashed border-slate-200 rounded-2xl">
+                <p className="text-slate-500 font-medium">No upcoming exams tracked under this field yet.</p>
               </div>
             )}
           </div>
@@ -350,9 +362,7 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════════════
-          4. CTA — full-width editorial closer
-      ══════════════════════════════════════════════════════════════════════ */}
+      {/* CTA */}
       <section className="relative py-24 sm:py-32 px-8 sm:px-16 lg:px-24 overflow-hidden bg-white border-t border-slate-100">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-blue-50/60 to-transparent pointer-events-none" />
 
@@ -371,10 +381,10 @@ export default function CareersPage() {
                 <span className="text-xs font-bold tracking-[0.2em] text-[#0066cc] uppercase">Don't see a fit?</span>
               </div>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 leading-[1.05] tracking-tight">
-                Great talent
+                Ready to crack 
                 <br />
                 <span className="font-spicy bg-gradient-to-r from-[#004499] via-[#0066cc] to-[#00a6ff] bg-clip-text text-transparent">
-                  creates its own role.
+                  your exam?
                 </span>
               </h2>
             </motion.div>
@@ -387,7 +397,7 @@ export default function CareersPage() {
               className="lg:col-span-5 space-y-6"
             >
               <p className="text-slate-500 font-medium leading-relaxed text-lg">
-                Even if we don't have a role open right now, we're always looking for exceptional people who believe in our mission. Reach out.
+                Join 50,000+ students already preparing on EDDVA. AI-powered study plans, mock tests, and doubt solving — all in one place.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3">
